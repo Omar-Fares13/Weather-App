@@ -46,7 +46,7 @@ export async function getForecast(lat, lng) {
             throw new Error(`HTTP Error Forecast! Status: ${response.status}`);
         }else{
             const data = await response.json();
-            console.log(data);
+            console.log(data.current.temp_c);
         }
 
     }catch(error){

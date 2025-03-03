@@ -15,10 +15,10 @@ const argv = yargs(hideBin(process.argv))
 
 async function main() {
   try {
-    // const geo = await getGeoCode(argv.a);
-    // if (geo) { 
-       getForecast(0, 0);
-    // }
+    const geo = await getGeoCode(argv.a);
+    if (geo) { 
+      await getForecast(geo.lat, geo.lng);
+    }
   } catch (error) {
     console.error("Error:", error.message);
   }
