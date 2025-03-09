@@ -50,6 +50,6 @@ export async function getForecast(lat, lng) {
         }
 
     }catch(error){
-
+        console.log(error.message);
     }
 }
