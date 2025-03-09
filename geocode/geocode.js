@@ -1,13 +1,17 @@
 
 import fetch from "node-fetch";
+import dotenv from "dotenv";
+dotenv.config();
 
+const geoKey = process.env.GEOCODE_API_KEY;
+const weatherKey = process.env.WEATHER_API_KEY;
 
 export async function getGeoCode(address) {
 
     try{
         var encodedAddress = encodeURIComponent(address);
 
-        var url = 'https://api.opencagedata.com/geocode/v1/json?key=ccbded3792c146c391baad3f1e7d7f8e&q=' + encodedAddress;
+        const url = `https://api.opencagedata.com/geocode/v1/json?key=${geoKey}&q=${encodedAddress}`;
 
         const response = await fetch(url);
 
@@ -36,9 +40,8 @@ export async function getGeoCode(address) {
 
 export async function getForecast(lat, lng) {
     try{
-        const key = '91e89eb58c8349dfbc8150907252202';
         const q = `${lat},${lng}`;
-        const url = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${q}`;
+        const url = `https://api.weatherapi.com/v1/forecast.json?key=${weatherKey}&q=${q}`;
 
         const response = await fetch(url);
 
